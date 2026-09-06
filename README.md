@@ -42,46 +42,6 @@ Results are strictly after the input by default. Use `inclusive: true` to allow
 an exact match. `DateTime` inputs must have UTC kind; `DateTimeOffset` accepts
 any offset. Both APIs return UTC results, or `null` when no occurrence exists.
 
-## Benchmarks
-
-<!-- BEGIN BENCHMARKS -->
-
-BenchmarkDotNet 0.15.8 · .NET 10.0.11.
-Measured September 5, 2026 (local time), with 3 warmup and 8 measurement iterations per case.
-
-Versions: **Cronos 0.13.0**, **NCrontab 3.4.0**, **Quartz 4.0.0**, **CronParser 1.3.0**.
-Each cell shows **time / allocated bytes per operation**.
-
-### Next occurrence
-
-| Schedule | Soenneker | Cronos | NCrontab | Quartz.NET | CronParser |
-|---|---:|---:|---:|---:|---:|
-| Every minute | **5.294 ns** / 0 B | 17.047 ns / 0 B | 19.305 ns / 0 B | 74.175 ns / 0 B | 114.788 ns / 272 B |
-| Every 15 seconds | **5.285 ns** / 0 B | 17.015 ns / 0 B | 17.551 ns / 0 B | 72.707 ns / 0 B | 116.989 ns / 272 B |
-| Weekdays at 09:00 | **21.348 ns** / 0 B | 30.507 ns / 0 B | 53.728 ns / 0 B | 317.456 ns / 0 B | 105.606 ns / 272 B |
-| Leap day | **14.109 ns** / 0 B | 24.170 ns / 0 B | 22.196 ns / 0 B | 437.949 ns / 0 B | 81.361 ns / 272 B |
-| Numeric lists | **7.314 ns** / 0 B | 19.319 ns / 0 B | 24.786 ns / 0 B | 227.816 ns / 0 B | 99.553 ns / 272 B |
-| Names and ranges | **16.062 ns** / 0 B | 21.230 ns / 0 B | 17.975 ns / 0 B | 131.786 ns / 0 B | 92.263 ns / 272 B |
-
-### Parse a new schedule
-
-| Schedule | Soenneker | Cronos | NCrontab | Quartz.NET | CronParser |
-|---|---:|---:|---:|---:|---:|
-| Every minute | **8.057 ns** / 0 B | 9.047 ns / 48 B | 204.896 ns / 1760 B | 121.955 ns / 496 B | 422.242 ns / 3168 B |
-| Every 15 seconds | **12.182 ns** / 0 B | 13.216 ns / 48 B | 257.584 ns / 2152 B | 131.395 ns / 496 B | 496.297 ns / 3296 B |
-| Weekdays at 09:00 | **11.974 ns** / 0 B | 13.459 ns / 48 B | 219.871 ns / 1816 B | 164.793 ns / 536 B | 879.122 ns / 3176 B |
-| Leap day | **10.213 ns** / 0 B | 12.694 ns / 48 B | 209.690 ns / 1768 B | 130.746 ns / 496 B | 653.586 ns / 3016 B |
-| Numeric lists | **16.841 ns** / 0 B | 19.639 ns / 48 B | 315.305 ns / 2248 B | 167.244 ns / 496 B | 647.180 ns / 3224 B |
-| Names and ranges | **28.900 ns** / 0 B | 33.109 ns / 48 B | 444.288 ns / 2400 B | 299.856 ns / 752 B | 1,308.159 ns / 3880 B |
-
-[Full BenchmarkDotNet output, errors, and standard deviations](benchmarks/reports/comparison.md).
-
-<!-- END BENCHMARKS -->
-
-Benchmarked against Cronos, NCrontab, Quartz.NET, and CronParser using equivalent
-UTC schedules. See the [full reports and methodology](benchmarks/RESULTS.md) for
-reproduction commands, environment details, and additional month-end and DST results.
-
 ## Syntax
 
 | Capability | Example |

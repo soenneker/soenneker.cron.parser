@@ -361,6 +361,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Benchmark runner intermediates; curated reports are kept separately.
+# Benchmark output
 benchmarks/results/
 benchmarks/*-run.log
