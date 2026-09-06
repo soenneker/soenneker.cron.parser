@@ -1,0 +1,84 @@
+```
+
+BenchmarkDotNet v0.15.8, Windows 11 (10.0.26200.9278/25H2/2025Update/HudsonValley2)
+AMD Ryzen Threadripper PRO 9995WX 96-Cores 2.50GHz, 1 CPU, 192 logical and 96 physical cores
+.NET SDK 10.0.400
+  [Host]     : .NET 10.0.11 (10.0.11, 10.0.1126.37416), X64 RyuJIT x86-64-v4
+  Job-YZJABG : .NET 10.0.11 (10.0.11, 10.0.1126.37416), X64 RyuJIT x86-64-v4
+
+IterationCount=8  LaunchCount=1  WarmupCount=3
+
+```
+| Method          | Categories | Scenario       | Mean         | Error      | StdDev     | Ratio | RatioSD | Gen0   | Gen1   | Allocated | Alloc Ratio |
+|---------------- |----------- |--------------- |-------------:|-----------:|-----------:|------:|--------:|-------:|-------:|----------:|------------:|
+| **CronosNext**      | **Next**       | **Every15Seconds** |    **17.015 ns** |  **0.2974 ns** |  **0.1320 ns** |  **1.00** |    **0.01** |      **-** |      **-** |         **-** |          **NA** |
+| SoennekerNext   | Next       | Every15Seconds |     5.285 ns |  0.1669 ns |  0.0741 ns |  0.31 |    0.00 |      - |      - |         - |          NA |
+| NCrontabNext    | Next       | Every15Seconds |    17.551 ns |  0.7202 ns |  0.3767 ns |  1.03 |    0.02 |      - |      - |         - |          NA |
+| QuartzNext      | Next       | Every15Seconds |    72.707 ns |  2.5794 ns |  1.1453 ns |  4.27 |    0.07 |      - |      - |         - |          NA |
+| CronParserNext  | Next       | Every15Seconds |   116.989 ns |  8.1133 ns |  4.2434 ns |  6.88 |    0.24 | 0.0162 |      - |     272 B |          NA |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosNext**      | **Next**       | **EveryMinute**    |    **17.047 ns** |  **0.4320 ns** |  **0.2259 ns** |  **1.00** |    **0.02** |      **-** |      **-** |         **-** |          **NA** |
+| SoennekerNext   | Next       | EveryMinute    |     5.294 ns |  0.3900 ns |  0.1732 ns |  0.31 |    0.01 |      - |      - |         - |          NA |
+| NCrontabNext    | Next       | EveryMinute    |    19.305 ns |  0.7881 ns |  0.4122 ns |  1.13 |    0.03 |      - |      - |         - |          NA |
+| QuartzNext      | Next       | EveryMinute    |    74.175 ns |  2.7961 ns |  1.2415 ns |  4.35 |    0.09 |      - |      - |         - |          NA |
+| CronParserNext  | Next       | EveryMinute    |   114.788 ns |  2.0365 ns |  0.7262 ns |  6.73 |    0.09 | 0.0162 |      - |     272 B |          NA |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosNext**      | **Next**       | **LeapDay**        |    **24.170 ns** |  **1.3010 ns** |  **0.6805 ns** |  **1.00** |    **0.04** |      **-** |      **-** |         **-** |          **NA** |
+| SoennekerNext   | Next       | LeapDay        |    14.109 ns |  0.3445 ns |  0.1530 ns |  0.58 |    0.02 |      - |      - |         - |          NA |
+| NCrontabNext    | Next       | LeapDay        |    22.196 ns |  1.3805 ns |  0.6130 ns |  0.92 |    0.03 |      - |      - |         - |          NA |
+| QuartzNext      | Next       | LeapDay        |   437.949 ns |  7.1835 ns |  2.5617 ns | 18.13 |    0.48 |      - |      - |         - |          NA |
+| CronParserNext  | Next       | LeapDay        |    81.361 ns |  2.2321 ns |  0.9911 ns |  3.37 |    0.10 | 0.0162 |      - |     272 B |          NA |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosNext**      | **Next**       | **Lists**          |    **19.319 ns** |  **0.8906 ns** |  **0.3954 ns** |  **1.00** |    **0.03** |      **-** |      **-** |         **-** |          **NA** |
+| SoennekerNext   | Next       | Lists          |     7.314 ns |  0.6210 ns |  0.3248 ns |  0.38 |    0.02 |      - |      - |         - |          NA |
+| NCrontabNext    | Next       | Lists          |    24.786 ns |  1.2277 ns |  0.5451 ns |  1.28 |    0.04 |      - |      - |         - |          NA |
+| QuartzNext      | Next       | Lists          |   227.816 ns |  3.6741 ns |  1.3102 ns | 11.80 |    0.23 |      - |      - |         - |          NA |
+| CronParserNext  | Next       | Lists          |    99.553 ns |  4.6964 ns |  2.4563 ns |  5.15 |    0.15 | 0.0162 |      - |     272 B |          NA |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosNext**      | **Next**       | **Names**          |    **21.230 ns** |  **0.8164 ns** |  **0.3625 ns** |  **1.00** |    **0.02** |      **-** |      **-** |         **-** |          **NA** |
+| SoennekerNext   | Next       | Names          |    16.062 ns |  0.2919 ns |  0.1041 ns |  0.76 |    0.01 |      - |      - |         - |          NA |
+| NCrontabNext    | Next       | Names          |    17.975 ns |  0.7716 ns |  0.3426 ns |  0.85 |    0.02 |      - |      - |         - |          NA |
+| QuartzNext      | Next       | Names          |   131.786 ns |  5.2705 ns |  2.3401 ns |  6.21 |    0.14 |      - |      - |         - |          NA |
+| CronParserNext  | Next       | Names          |    92.263 ns |  0.7453 ns |  0.3309 ns |  4.35 |    0.07 | 0.0162 |      - |     272 B |          NA |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosNext**      | **Next**       | **Weekdays**       |    **30.507 ns** |  **0.4619 ns** |  **0.2051 ns** |  **1.00** |    **0.01** |      **-** |      **-** |         **-** |          **NA** |
+| SoennekerNext   | Next       | Weekdays       |    21.348 ns |  1.1632 ns |  0.6084 ns |  0.70 |    0.02 |      - |      - |         - |          NA |
+| NCrontabNext    | Next       | Weekdays       |    53.728 ns |  2.4367 ns |  1.2744 ns |  1.76 |    0.04 |      - |      - |         - |          NA |
+| QuartzNext      | Next       | Weekdays       |   317.456 ns | 21.7948 ns | 11.3991 ns | 10.41 |    0.36 |      - |      - |         - |          NA |
+| CronParserNext  | Next       | Weekdays       |   105.606 ns |  5.7555 ns |  3.0102 ns |  3.46 |    0.10 | 0.0162 |      - |     272 B |          NA |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosParse**     | **Parse**      | **Every15Seconds** |    **13.216 ns** |  **0.4341 ns** |  **0.2271 ns** |  **1.00** |    **0.02** | **0.0029** |      **-** |      **48 B** |        **1.00** |
+| SoennekerParse  | Parse      | Every15Seconds |    12.182 ns |  0.5959 ns |  0.2646 ns |  0.92 |    0.02 |      - |      - |         - |        0.00 |
+| NCrontabParse   | Parse      | Every15Seconds |   257.584 ns | 10.2167 ns |  4.5363 ns | 19.50 |    0.45 | 0.1283 |      - |    2152 B |       44.83 |
+| QuartzParse     | Parse      | Every15Seconds |   131.395 ns |  5.5474 ns |  2.4631 ns |  9.94 |    0.24 | 0.0296 |      - |     496 B |       10.33 |
+| CronParserParse | Parse      | Every15Seconds |   496.297 ns | 15.6174 ns |  6.9342 ns | 37.56 |    0.78 | 0.1965 | 0.0010 |    3296 B |       68.67 |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosParse**     | **Parse**      | **EveryMinute**    |     **9.047 ns** |  **0.7557 ns** |  **0.3953 ns** |  **1.00** |    **0.06** | **0.0029** |      **-** |      **48 B** |        **1.00** |
+| SoennekerParse  | Parse      | EveryMinute    |     8.057 ns |  0.1676 ns |  0.0877 ns |  0.89 |    0.04 |      - |      - |         - |        0.00 |
+| NCrontabParse   | Parse      | EveryMinute    |   204.896 ns |  3.3714 ns |  1.4969 ns | 22.69 |    0.93 | 0.1051 |      - |    1760 B |       36.67 |
+| QuartzParse     | Parse      | EveryMinute    |   121.955 ns |  7.6642 ns |  4.0085 ns | 13.50 |    0.69 | 0.0296 |      - |     496 B |       10.33 |
+| CronParserParse | Parse      | EveryMinute    |   422.242 ns | 16.9379 ns |  8.8589 ns | 46.75 |    2.09 | 0.1893 | 0.0010 |    3168 B |       66.00 |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosParse**     | **Parse**      | **LeapDay**        |    **12.694 ns** |  **0.2266 ns** |  **0.1185 ns** |  **1.00** |    **0.01** | **0.0029** |      **-** |      **48 B** |        **1.00** |
+| SoennekerParse  | Parse      | LeapDay        |    10.213 ns |  0.2420 ns |  0.1074 ns |  0.80 |    0.01 |      - |      - |         - |        0.00 |
+| NCrontabParse   | Parse      | LeapDay        |   209.690 ns |  4.7709 ns |  2.1183 ns | 16.52 |    0.21 | 0.1056 |      - |    1768 B |       36.83 |
+| QuartzParse     | Parse      | LeapDay        |   130.746 ns |  2.0535 ns |  1.0740 ns | 10.30 |    0.12 | 0.0296 |      - |     496 B |       10.33 |
+| CronParserParse | Parse      | LeapDay        |   653.586 ns | 27.9741 ns | 14.6310 ns | 51.49 |    1.18 | 0.1802 | 0.0010 |    3016 B |       62.83 |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosParse**     | **Parse**      | **Lists**          |    **19.639 ns** |  **1.7484 ns** |  **0.7763 ns** |  **1.00** |    **0.05** | **0.0029** |      **-** |      **48 B** |        **1.00** |
+| SoennekerParse  | Parse      | Lists          |    16.841 ns |  0.1910 ns |  0.0848 ns |  0.86 |    0.03 |      - |      - |         - |        0.00 |
+| NCrontabParse   | Parse      | Lists          |   315.305 ns |  5.4074 ns |  2.4009 ns | 16.08 |    0.58 | 0.1340 |      - |    2248 B |       46.83 |
+| QuartzParse     | Parse      | Lists          |   167.244 ns |  3.6719 ns |  1.9205 ns |  8.53 |    0.32 | 0.0296 |      - |     496 B |       10.33 |
+| CronParserParse | Parse      | Lists          |   647.180 ns | 16.1225 ns |  7.1585 ns | 33.00 |    1.22 | 0.1926 | 0.0010 |    3224 B |       67.17 |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosParse**     | **Parse**      | **Names**          |    **33.109 ns** |  **1.2204 ns** |  **0.5419 ns** |  **1.00** |    **0.02** | **0.0029** |      **-** |      **48 B** |        **1.00** |
+| SoennekerParse  | Parse      | Names          |    28.900 ns |  1.0198 ns |  0.5334 ns |  0.87 |    0.02 |      - |      - |         - |        0.00 |
+| NCrontabParse   | Parse      | Names          |   444.288 ns | 11.1943 ns |  5.8548 ns | 13.42 |    0.26 | 0.1431 |      - |    2400 B |       50.00 |
+| QuartzParse     | Parse      | Names          |   299.856 ns |  3.5939 ns |  1.8797 ns |  9.06 |    0.15 | 0.0448 |      - |     752 B |       15.67 |
+| CronParserParse | Parse      | Names          | 1,308.159 ns | 15.4900 ns |  6.8777 ns | 39.52 |    0.63 | 0.2308 |      - |    3880 B |       80.83 |
+|                 |            |                |              |            |            |       |         |        |        |           |             |
+| **CronosParse**     | **Parse**      | **Weekdays**       |    **13.459 ns** |  **1.5362 ns** |  **0.6821 ns** |  **1.00** |    **0.07** | **0.0029** |      **-** |      **48 B** |        **1.00** |
+| SoennekerParse  | Parse      | Weekdays       |    11.974 ns |  0.1407 ns |  0.0736 ns |  0.89 |    0.04 |      - |      - |         - |        0.00 |
+| NCrontabParse   | Parse      | Weekdays       |   219.871 ns |  4.5001 ns |  1.9981 ns | 16.37 |    0.75 | 0.1085 |      - |    1816 B |       37.83 |
+| QuartzParse     | Parse      | Weekdays       |   164.793 ns |  2.8428 ns |  1.4868 ns | 12.27 |    0.56 | 0.0319 |      - |     536 B |       11.17 |
+| CronParserParse | Parse      | Weekdays       |   879.122 ns | 43.2604 ns | 22.6260 ns | 65.46 |    3.35 | 0.1898 | 0.0010 |    3176 B |       66.17 |
