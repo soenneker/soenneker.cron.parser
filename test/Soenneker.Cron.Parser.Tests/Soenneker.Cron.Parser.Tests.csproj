@@ -7,7 +7,7 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
-    <ItemGroup><PackageReference Include="Cronos" Version="0.13.0" /><PackageReference Include="TUnit" Version="1.66.10" />
+    <ItemGroup><PackageReference Include="Cronos" Version="0.13.0" /><PackageReference Include="TUnit" Version="1.66.27" />
     </ItemGroup>
 
     <ItemGroup>
