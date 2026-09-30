@@ -9,7 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="Cronos" Version="0.13.0" />
-        <PackageReference Include="TUnit" Version="1.72.4" />
+        <PackageReference Include="TUnit" Version="1.72.10" />
     </ItemGroup>
 
     <ItemGroup>
